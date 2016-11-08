@@ -63,11 +63,7 @@
         self.activePlayerLabel.text = [self.gameController changeActivePlayer];
     }
     
-    if (self.gameController.player1.livesRemaining == 0) {
-        self.winningLabel.text = @"Player 2 Wins!!!";
-    } else if (self.gameController.player2.livesRemaining == 0) {
-        self.winningLabel.text = @"Player 1 Wins!!!";
-    }
+    self.winningLabel.text = [self.gameController didSomeoneWin];
 }
 
 

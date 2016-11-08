@@ -20,5 +20,6 @@
 -(NSString *)changeActivePlayer;
 -(NSString *)generateQuestion;
 -(BOOL)evaluateAnswer:(NSString *)userAnswer;
+-(NSString *)didSomeoneWin;
 
 @end

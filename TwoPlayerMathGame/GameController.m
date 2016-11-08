@@ -70,6 +70,18 @@
     }
 }
 
+-(NSString *)didSomeoneWin {
+    NSString *winnerString;
+    if (self.player1.livesRemaining == 0) {
+        winnerString = @"Player 2 Wins!!!";
+    } else if (self.player2.livesRemaining == 0) {
+        winnerString = @"Player 1 Wins!!!";
+    } else {
+        return @"";
+    }
+    return winnerString;
+}
+
 
 
 

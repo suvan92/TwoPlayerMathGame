@@ -66,8 +66,6 @@
     self.winningLabel.text = [self.gameController didSomeoneWin];
 }
 
-
-
 - (IBAction)deleteButton:(UIButton *)sender {
     NSString *currentAnswer = self.playerAnswerLabel.text;
     self.playerAnswerLabel.text = [currentAnswer substringToIndex:currentAnswer.length-(currentAnswer.length>0)];

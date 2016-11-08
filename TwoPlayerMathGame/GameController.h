@@ -14,12 +14,10 @@
 @property (nonatomic) Player *player1;
 @property (nonatomic) Player *player2;
 @property (nonatomic) Player *activePlayer;
-@property (nonatomic) NSString *currentQuestion;
-@property (nonatomic) NSString *answerString;
 
 -(NSString *)changeActivePlayer;
 -(NSString *)generateQuestion;
 -(BOOL)evaluateAnswer:(NSString *)userAnswer;
--(NSString *)didSomeoneWin;
+-(BOOL)didSomeoneWin;
 
 @end

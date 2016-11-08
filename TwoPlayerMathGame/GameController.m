@@ -8,6 +8,13 @@
 
 #import "GameController.h"
 
+@interface GameController()
+
+@property (nonatomic) NSString *currentQuestion;
+@property (nonatomic) NSString *answerString;
+
+@end
+
 @implementation GameController
 
 - (instancetype)init
@@ -16,6 +23,7 @@
     if (self) {
         _player1 = [[Player alloc] initWithName:@"Player 1"];
         _player2 = [[Player alloc] initWithName:@"Player 2"];
+        _activePlayer = nil;
     }
     return self;
 }
@@ -70,18 +78,13 @@
     }
 }
 
--(NSString *)didSomeoneWin {
-    NSString *winnerString;
-    if (self.player1.livesRemaining == 0) {
-        winnerString = @"Player 2 Wins!!!";
-    } else if (self.player2.livesRemaining == 0) {
-        winnerString = @"Player 1 Wins!!!";
+-(BOOL) didSomeoneWin {
+    if (self.player1.livesRemaining == 0 || self.player2.livesRemaining == 0) {
+        return YES;
     } else {
-        return @"";
+        return NO;
     }
-    return winnerString;
 }
-
 
 
 

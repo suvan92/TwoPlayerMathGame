@@ -63,7 +63,41 @@
         self.activePlayerLabel.text = [self.gameController changeActivePlayer];
     }
     
-    self.winningLabel.text = [self.gameController didSomeoneWin];
+    
+    if ([self.gameController didSomeoneWin]) {
+        if (self.gameController.player1.livesRemaining == 0) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"GAME OVER" message:@"Player 2 Wins!!!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *replay = [UIAlertAction actionWithTitle:@"Would you like to play again?" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                self.gameController = [[GameController alloc] init];
+                self.activePlayerLabel.text = [self.gameController changeActivePlayer];
+                self.playerAnswerLabel.text = @"";
+                self.player1ScoreLabel.text = [NSString stringWithFormat:@"Player 1 Lives Remaining: %d", self.gameController.player1.livesRemaining];
+                self.player2ScoreLabel.text = [NSString stringWithFormat:@"Player 2 Lives Remaining: %d", self.gameController.player2.livesRemaining];
+                self.rightWrongLabel.text = @"";
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alert addAction:replay];
+            [self presentViewController:alert animated:YES completion:nil];
+            
+        } else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"GAME OVER" message:@"Player 1 Wins!!!" preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *replay = [UIAlertAction actionWithTitle:@"Would you like to play again?" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                self.gameController = [[GameController alloc] init];
+                self.activePlayerLabel.text = [self.gameController changeActivePlayer];
+                self.playerAnswerLabel.text = @"";
+                self.player1ScoreLabel.text = [NSString stringWithFormat:@"Player 1 Lives Remaining: %d", self.gameController.player1.livesRemaining];
+                self.player2ScoreLabel.text = [NSString stringWithFormat:@"Player 2 Lives Remaining: %d", self.gameController.player2.livesRemaining];
+                self.rightWrongLabel.text = @"";
+                [alert dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [alert addAction:replay];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+        
+    }
+    
 }
 
 - (IBAction)deleteButton:(UIButton *)sender {
